@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chatbot</h1>
+        
+        <!-- Caja de mensajes -->
+        <div id="chatBox" class="chat-box"></div>
+        
+        <!-- Formulario para el mensaje del usuario -->
+        <input type="text" id="userMessage" placeholder="Escribe tu mensaje...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Chatbot - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Agregar mensajes al chat
+        function addMessage(message, sender) {
+            const chatBox = document.getElementById('chatBox');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            
+            if (sender === 'user') {
+                messageElement.classList.add('user-message');
+            } else {
+                messageElement.classList.add('bot-message');
+            }
+
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Desplazar el chat hacia abajo
+        }
+
+        // Enviar mensaje al backend
+        async function sendMessage() {
+            const userMessage = document.getElementById('userMessage').value.trim();
+            if (!userMessage) return;
+
+            addMessage(userMessage, 'user'); // Mostrar mensaje del usuario
+            document.getElementById('userMessage').value = ''; // Limpiar input
+
+            // Hacer la solicitud al servidor Flask
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje: userMessage })
+                });
+
+                const data = await response.json();
+                addMessage(data.respuesta, 'bot'); // Mostrar respuesta del bot
+            } catch (error) {
+                addMessage("Error al conectar con el servidor.", 'bot');
+            }
+        }
+
+        // Detectar la tecla Enter en el campo de texto
+        const inputField = document.getElementById('userMessage');
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+                event.preventDefault(); // Prevenir comportamiento por defecto (salto de línea)
+            }
+        });
+    </script>
+</body>
+</html>
