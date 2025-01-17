@@ -1,0 +1,31 @@
+{
+          "default_user": {
+                    "nombre": null,
+                    "historial": [
+                              {
+                                        "usuario": "gasdfasdf"
+                              },
+                              {
+                                        "bot": "Hola, ¿cómo te llamas?"
+                              },
+                              {
+                                        "usuario": "Soy gaston"
+                              },
+                              {
+                                        "bot": "Hola, ¿cómo te llamas?"
+                              },
+                              {
+                                        "usuario": "soy gastor"
+                              },
+                              {
+                                        "bot": "Hola, ¿cómo te llamas?"
+                              },
+                              {
+                                        "usuario": "Mi nombre es Gaston"
+                              },
+                              {
+                                        "bot": "Hola, ¿cómo te llamas?"
+                              }
+                    ]
+          }
+}
