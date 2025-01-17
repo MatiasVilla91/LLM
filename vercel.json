@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "version": 2,
     "builds": [
@@ -8,3 +9,15 @@
     ]
   }
     
+=======
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "app/templates/index.html",
+        "use": "@vercel/static"
+      }
+    ]
+  }
+  
+>>>>>>> 43f6f15e3f8998801265ba0d1ffef5433f3f457c
