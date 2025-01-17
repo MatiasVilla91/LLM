@@ -180,7 +180,7 @@ pyttsx3==2.90
 pytube==15.0.0
 pytweening==1.2.0
 pytz==2023.3.post1
-pywin32==306
+
 PyYAML==6.0.1
 pyzmq==26.2.0
 rasterio==1.4.1
