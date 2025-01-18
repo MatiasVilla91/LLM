@@ -60,7 +60,7 @@ scikit-learn>=1.5.2
 scipy>=1.14.0
 seaborn>=0.13.2
 SQLAlchemy==2.0.36
-tensorboard==2.18.0
+tensorboard
 tensorflow==2.15.1
 torch>=2.5.1
 transformers>=4.47.0
