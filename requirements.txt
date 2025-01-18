@@ -57,7 +57,7 @@ scipy
 seaborn
 SQLAlchemy
 tensorboard
-tensorflow
+tensorflow-cpu>=2.15.0
 torch
 transformers
 yfinance
